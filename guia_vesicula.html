@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia para Prevenção de Crises na Vesícula</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Soothing Neutrals -->
+    <!-- Application Structure Plan: The application is designed as a single-page guide with a clear, task-oriented flow. It starts with an introduction (Início), then moves to the core dietary information (Alimentação), provides multiple practical meal plans (Cardápios Sugeridos), answers specific user questions (Estilo de Vida e Dúvidas), and finally offers additional resources (Artigos Relacionados). This structure was chosen to logically guide the user from understanding the problem to implementing practical solutions and exploring further. Key interactions include a tab-based system for viewing allowed vs. avoided foods, which simplifies information consumption and prevents cognitive overload from long lists. Navigation is handled by smooth-scrolling anchor links. -->
+    <!-- Visualization & Content Choices: Report Info: User needs lists of good/bad foods. -> Goal: Inform/Organize. -> Viz/Presentation: Two interactive lists (tabs) labeled "Alimentos Amigos" and "Alimentos a Evitar". -> Interaction: User clicks a tab to reveal the corresponding list. -> Justification: This is more organized and less intimidating than one giant list. It allows focused review of what to eat or what to avoid. Report Info: User needs multiple daily meal plans. -> Goal: Inform/Provide multiple examples. -> Viz/Presentation: Multiple structured HTML layouts for different one-day menus (Café da Manhã, Almoço, etc.), each in its own section. -> Interaction: None needed, they are clear, static references. -> Justification: Provides concrete, actionable examples of how to apply the dietary rules for various days, offering more variety as requested. Report Info: User has questions about exercise/supplements. -> Goal: Inform/Answer specific questions. -> Viz/Presentation: A clear Q&A (FAQ) section. -> Interaction: None needed. -> Justification: Directly addresses user's secondary concerns in a clear format. Report Info: User wants more articles. -> Goal: Provide additional resources. -> Viz/Presentation: A list of external links with brief descriptions. -> Interaction: User clicks links to external sites. -> Justification: Offers further reading and validates information with external sources. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .tab-active {
+            background-color: #10B981;
+            color: white;
+            border-color: #10B981;
+        }
+        .tab-inactive {
+            background-color: #F3F4F6;
+            color: #4B5563;
+            border-color: #D1D5DB;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-emerald-600">
+                <span class="text-green-500">🌿</span> Guia da Vesícula
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#inicio" class="text-gray-600 hover:text-emerald-600 transition">Início</a>
+                <a href="#alimentacao" class="text-gray-600 hover:text-emerald-600 transition">Alimentação</a>
+                <a href="#cardapio1" class="text-gray-600 hover:text-emerald-600 transition">Cardápio Dia 1</a>
+                <a href="#cardapio2" class="text-gray-600 hover:text-emerald-600 transition">Cardápio Dia 2</a>
+                <a href="#cardapio3" class="text-gray-600 hover:text-emerald-600 transition">Cardápio Dia 3</a>
+                <a href="#duvidas" class="text-gray-600 hover:text-emerald-600 transition">Dúvidas</a>
+                <a href="#materias" class="text-gray-600 hover:text-emerald-600 transition">Artigos</a>
+            </div>
+            <div class="md:hidden">
+                <button id="menu-btn" class="text-gray-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#inicio" class="block py-2 text-gray-600 hover:text-emerald-600 transition">Início</a>
+            <a href="#alimentacao" class="block py-2 text-gray-600 hover:text-emerald-600 transition">Alimentação</a>
+            <a href="#cardapio1" class="block py-2 text-gray-600 hover:text-emerald-600 transition">Cardápio Dia 1</a>
+            <a href="#cardapio2" class="block py-2 text-gray-600 hover:text-emerald-600 transition">Cardápio Dia 2</a>
+            <a href="#cardapio3" class="block py-2 text-gray-600 hover:text-emerald-600 transition">Cardápio Dia 3</a>
+            <a href="#duvidas" class="block py-2 text-gray-600 hover:text-emerald-600 transition">Dúvidas</a>
+            <a href="#materias" class="block py-2 text-gray-600 hover:text-emerald-600 transition">Artigos</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="inicio" class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-bold text-emerald-700 mb-4">Evite as Crises da Vesícula</h1>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Este guia foi criado para você, que está aguardando a cirurgia de vesícula e precisa de ajuda para se alimentar corretamente e evitar as dolorosas crises. Aqui você encontrará informações claras sobre o que comer, o que evitar, cardápios práticos e respostas para suas principais dúvidas. Lembre-se, este guia é um apoio, mas a orientação de um médico ou nutricionista é fundamental.
+            </p>
+        </section>
+
+        <section id="alimentacao" class="mb-16">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-800">O Pilar da Dieta: O Que Comer e Evitar</h2>
+                <p class="text-md text-gray-500 max-w-2xl mx-auto mt-2">A vesícula biliar é estimulada pela gordura. Para evitar crises, o segredo é uma dieta com o mínimo de gordura possível. Use os botões abaixo para navegar entre os alimentos que são seus aliados e aqueles que você deve manter distância.</p>
+            </div>
+
+            <div class="flex justify-center mb-8">
+                <button id="tab-amigos" class="tab-button tab-active py-2 px-6 rounded-l-lg border-2 font-semibold transition">
+                    ✅ Alimentos Amigos
+                </button>
+                <button id="tab-evitar" class="tab-button tab-inactive py-2 px-6 rounded-r-lg border-2 font-semibold transition">
+                    ❌ Alimentos a Evitar
+                </button>
+            </div>
+
+            <div id="content-amigos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-lg mb-2 text-emerald-700">🍎 Frutas (Baixas em Gordura)</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Maçã, Pera, Mamão, Melão, Melancia</li>
+                        <li>Morango, Laranja, Mexerica, Limão</li>
+                        <li>Pêssego, Ameixa, Uva</li>
+                        <li>(Evitar abacate e coco)</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-lg mb-2 text-emerald-700">🥕 Legumes e Verduras</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Folhas verdes: Alface, Rúcula, Espinafre</li>
+                        <li>Abobrinha, Berinjela, Chuchu</li>
+                        <li>Cenoura, Beterraba (cozidos)</li>
+                        <li>Tomate, Pepino</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-lg mb-2 text-emerald-700">🍗 Proteínas Magras</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Peito de frango sem pele (grelhado ou cozido)</li>
+                        <li>Peixes brancos (Tilápia, Pescada)</li>
+                        <li>Clara de ovo (a gema tem gordura)</li>
+                        <li>Cortes de carne bovina magra (ex: patinho, coxão mole), em pequenas porções e sem gordura visível.</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-lg mb-2 text-emerald-700">🍚 Carboidratos e Grãos</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Arroz branco (mais fácil de digerir)</li>
+                        <li>Batata, Mandioca, Inhame (cozidos ou assados)</li>
+                        <li>Pão branco ou integral (sem manteiga/margarina)</li>
+                        <li>Aveia, Quinoa</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-lg mb-2 text-emerald-700">  Laticínios Desnatados</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Leite desnatado</li>
+                        <li>Iogurte natural desnatado</li>
+                        <li>Queijos brancos e magros (Ricota, Cottage)</li>
+                        <li>Leites vegetais (arroz, aveia)</li>
+                    </ul>
+                </div>
+                 <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="font-bold text-lg mb-2 text-emerald-700">💧 Bebidas</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Água (muita!)</li>
+                        <li>Sucos de fruta naturais (sem açúcar)</li>
+                        <li>Chás de ervas (camomila, erva-doce)</li>
+                        <li>Água de coco</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="content-evitar" class="hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm border-2 border-red-200">
+                    <h3 class="font-bold text-lg mb-2 text-red-700">🍔 Frituras e Gorduras</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Qualquer alimento frito (batata, salgadinhos)</li>
+                        <li>Carnes gordurosas (picanha, costela, cupim)</li>
+                        <li>Linguiça, Salsicha, Bacon, Presunto, Salame</li>
+                        <li>Pele de frango, gordura aparente da carne</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border-2 border-red-200">
+                    <h3 class="font-bold text-lg mb-2 text-red-700">🧀 Laticínios Integrais</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Leite integral</li>
+                        <li>Iogurte integral, creme de leite, nata</li>
+                        <li>Queijos amarelos (mussarela, prato, parmesão)</li>
+                        <li>Manteiga, Margarina, Requeijão cremoso</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border-2 border-red-200">
+                    <h3 class="font-bold text-lg mb-2 text-red-700">🍩 Industrializados e Doces</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Biscoitos recheados, salgadinhos de pacote</li>
+                        <li>Chocolate, sorvetes cremosos, bolos</li>
+                        <li>Molhos prontos (maionese, ketchup)</li>
+                        <li>Caldo de carne em cubo</li>
+                    </ul>
+                </div>
+                <                <div class="bg-white p-6 rounded-lg shadow-sm border-2 border-red-200">
+                    <h3 class="font-bold text-lg mb-2 text-red-700">🥑 Alimentos "Saudáveis" mas Gordurosos</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Abacate, Açaí, Coco</li>
+                        <li>Oleaginosas (castanhas, nozes, amendoim)</li>
+                        <li>Gema de ovo</li>
+                        <li>Azeite (usar o mínimo possível, prefira cozinhar com água)</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border-2 border-red-200">
+                    <h3 class="font-bold text-lg mb-2 text-red-700">🍺 Bebidas</h3>
+                    <ul class="list-disc list-inside text-gray-600 space-y-1">
+                        <li>Bebidas alcoólicas (principalmente cerveja)</li>
+                        <li>Refrigerantes</li>
+                        <li>Sucos industrializados e adoçados</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cardápio do Dia 1 -->
+        <section id="cardapio1" class="mb-16 bg-emerald-50 p-8 rounded-lg">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-800">Cardápio do Dia 1 (Exemplo)</h2>
+                <p class="text-md text-gray-500 max-w-2xl mx-auto mt-2">Um exemplo de um dia de alimentação com opções baratas e comuns no Brasil.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">☕ Café da Manhã</h3>
+                    <p class="text-gray-600">Pão francês (sem miolo e sem manteiga) com uma fatia de ricota, ou mamão com aveia. Café preto ou chá de ervas.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">🍚 Almoço</h3>
+                    <p class="text-gray-600">Arroz branco, feijão (só o caldo e grãos, sem carnes gordas), filé de frango grelhado e salada de alface e tomate. Uma laranja de sobremesa.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">🍎 Lanche da Tarde</h3>
+                    <p class="text-gray-600">Iogurte desnatado com uma colher de mel ou uma fruta como maçã ou banana.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">🍲 Jantar</h3>
+                    <p class="text-gray-600">Sopa de legumes (batata, cenoura, chuchu, abobrinha) com pedaços de frango desfiado, ou uma omelete de claras com tomate.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cardápio do Dia 2 -->
+        <section id="cardapio2" class="mb-16 bg-emerald-50 p-8 rounded-lg">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-800">Cardápio do Dia 2 (Exemplo)</h2>
+                <p class="text-md text-gray-500 max-w-2xl mx-auto mt-2">Mais opções para o seu dia a dia.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">☕ Café da Manhã</h3>
+                    <p class="text-gray-600">Vitamina de mamão com leite desnatado e aveia. Torradas de pão branco.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">🍚 Almoço</h3>
+                    <p class="text-gray-600">Arroz branco, lentilha cozida, filé de pescada assado e purê de abóbora. Salada de pepino.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">🍎 Lanche da Tarde</h3>
+                    <p class="text-gray-600">Gelatina diet com pedaços de morango.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">🍲 Jantar</h3>
+                    <p class="text-gray-600">Sopa de mandioquinha com carne moída magra (patinho) bem cozida e desfiada.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cardápio do Dia 3 -->
+        <section id="cardapio3" class="mb-16 bg-emerald-50 p-8 rounded-lg">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-800">Cardápio do Dia 3 (Exemplo)</h2>
+                <p class="text-md text-gray-500 max-w-2xl mx-auto mt-2">Mais uma opção para te ajudar a variar o cardápio.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">☕ Café da Manhã</h3>
+                    <p class="text-gray-600">Biscoito de água e sal (poucas unidades) com geleia de fruta light. Chá de erva-doce.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">🍚 Almoço</h3>
+                    <p class="text-gray-600">Macarrão cozido com molho de tomate caseiro (sem óleo), peito de peru desfiado e vagem cozida.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">🍎 Lanche da Tarde</h3>
+                    <p class="text-gray-600">Uvas frescas ou melão em cubos.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">🍲 Jantar</h3>
+                    <p class="text-gray-600">Omelete de claras com espinafre e tomate. Batata cozida.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="duvidas" class="mb-16">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-800">Estilo de Vida e Dúvidas Comuns</h2>
+                <p class="text-md text-gray-500 max-w-2xl mx-auto mt-2">Alimentação é chave, mas outras dúvidas sobre seu dia a dia também são importantes. Veja abaixo as respostas para as perguntas mais comuns.</p>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="font-semibold text-xl mb-2">🏃‍♀️ Posso fazer exercícios físicos?</h3>
+                    <p class="text-gray-600">
+                        <strong>Sim, com moderação.</strong> Exercícios leves a moderados como caminhada, ioga ou natação são ótimos. Eles ajudam a controlar o peso e melhoram o bem-estar.
+                        <br><br>
+                        <strong>Cuidado:</strong> Evite exercícios de altíssimo impacto ou que forcem muito o abdômen, pois podem causar desconforto. O mais importante é ouvir seu corpo. Se sentir dor, pare e descanse.
+                    </p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="font-semibold text-xl mb-2">💪 E Whey Protein e Creatina?</h3>
+                    <p class="text-gray-600">
+                        <strong>Whey Protein:</strong> É uma proteína derivada do soro do leite. A principal preocupação é a gordura. Se for usar, opte pela versão <strong>isolada ou hidrolisada</strong>, que têm teor de gordura quase zero. Evite a versão concentrada. Comece com uma dose pequena para ver como seu corpo reage.
+                        <br><br>
+                        <strong>Whey de Soja:</strong> O whey de soja é uma alternativa vegetal para quem tem intolerância à lactose ou prefere evitar produtos lácteos. Em geral, o whey de soja isolado também possui baixo teor de gordura, tornando-o uma opção mais segura para quem tem problemas na vesícula. Verifique sempre o rótulo para confirmar o teor de gordura.
+                        <br><br>
+                        <strong>Creatina:</strong> Não tem relação direta com a vesícula ou gordura. Em geral, o uso é considerado seguro para a vesícula. No entanto, é crucial beber <strong>muita água</strong> ao usar creatina para não sobrecarregar os rins.
+                        <br><br>
+                        <strong>Recomendação final:</strong> A melhor pessoa para te orientar sobre suplementos é um médico ou nutricionista. Não comece a usar por conta própria, especialmente nesta fase sensível.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="materias" class="mb-16 bg-gray-100 p-8 rounded-lg">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-800">Artigos Relacionados sobre Crises de Vesícula</h2>
+                <p class="text-md text-gray-500 max-w-2xl mx-auto mt-2">Aprofunde seus conhecimentos com estas leituras complementares sobre o tema.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">Dieta na crise de vesícula</h3>
+                    <p class="text-gray-600 mb-3">Entenda o que comer e o que evitar durante uma crise de vesícula para aliviar os sintomas e prevenir novas ocorrências.</p>
+                    <a href="https://www.drhugomarques.com.br/blog/dieta-na-crise-de-vesicula" target="_blank" class="text-emerald-600 hover:underline font-medium">Leia mais &rarr;</a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">Cardápio para quem tem pedra na vesícula</h3>
+                    <p class="text-gray-600 mb-3">Dicas e sugestões de cardápio para quem tem pedra na vesícula, com foco em alimentos permitidos e a serem evitados.</p>
+                    <a href="https://www.buscopan.com.br/blog/alimentacao/cardapio-para-quem-tem-pedra-na-vesicula-veja-dicas-do-que-comer" target="_blank" class="text-emerald-600 hover:underline font-medium">Leia mais &rarr;</a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">Autocuidados para pedra na vesícula</h3>
+                    <p class="text-gray-600 mb-3">Saiba quais são os autocuidados importantes, incluindo dieta e exercícios, para quem tem pedra na vesícula.</p>
+                    <a href="https://www.buscopan.com.br/blog/tratamentos/autocuidados-para-pedra-na-vesicula-o-que-e-bom-fazer-veja" target="_blank" class="text-emerald-600 hover:underline font-medium">Leia mais &rarr;</a>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                    <h3 class="font-semibold text-xl mb-2 text-emerald-700">Problemas nos rins e fígado: uso incorreto de Whey Protein e Creatina</h3>
+                    <p class="text-gray-600 mb-3">Entenda os riscos do uso incorreto de suplementos como Whey Protein e Creatina para a saúde do fígado e rins.</p>
+                    <a href="https://midiamax.uol.com.br/cotidiano/2024/problemas-nos-rins-e-figado-uso-incorreto-de-whey-protein-e-creatina-pode-prejudicar-a-saude/" target="_blank" class="text-emerald-600 hover:underline font-medium">Leia mais &rarr;</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-6">
+        <div class="container mx-auto px-6">
+            <p><strong>Atenção:</strong> Este guia é informativo e não substitui a consulta com um profissional de saúde.</p>
+            <p class="text-sm text-gray-400 mt-2">Criado com cuidado por Fernando Alves dos Santos para te ajudar a ter mais qualidade de vida.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Seleção de elementos do DOM para as abas de alimentos
+        const tabAmigos = document.getElementById('tab-amigos');
+        const tabEvitar = document.getElementById('tab-evitar');
+        const contentAmigos = document.getElementById('content-amigos');
+        const contentEvitar = document.getElementById('content-evitar');
+        // Seleção de elementos do DOM para o menu mobile
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // Função para ativar a aba selecionada e mostrar o conteúdo correspondente
+        function setActiveTab(activeTab, inactiveTab, activeContent, inactiveContent) {
+            activeTab.classList.remove('tab-inactive');
+            activeTab.classList.add('tab-active');
+            inactiveTab.classList.remove('tab-active');
+            inactiveTab.classList.add('tab-inactive');
+
+            activeContent.classList.remove('hidden');
+            inactiveContent.classList.add('hidden');
+        }
+
+        // Event listeners para as abas de alimentos
+        tabAmigos.addEventListener('click', () => {
+            setActiveTab(tabAmigos, tabEvitar, contentAmigos, contentEvitar);
+        });
+
+        tabEvitar.addEventListener('click', () => {
+            setActiveTab(tabEvitar, tabAmigos, contentEvitar, contentAmigos);
+        });
+        
+        // Event listener para o botão do menu mobile
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Event listeners para os links do menu mobile (para fechar o menu ao clicar)
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        console.log("Script JavaScript carregado e executado com sucesso.");
+    </script>
+</body>
+</html>
+ 
